@@ -1,0 +1,75 @@
+[project]
+name = "pyroll-core"
+description = "pyroll-core-poc"
+authors = [{ name = "Max Weiner", email = "max.weiner@imf.tu-freiberg.de" }]
+version = "4.0a"
+requires-python = ">=3.14"
+dependencies = [
+  "numpy",
+  "shapely ~= 2.0",
+  "pydantic ~= 2.13",
+  "pyroll-pydantic-extensions",
+]
+license = "BSD-3-Clause"
+readme = "README.md"
+keywords = []
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python",
+]
+
+[project.urls]
+Documentation = "https://github.com/pyroll-project/pyroll-core/src/branch/main/README.md"
+Issues = "https://github.com/pyroll-project/pyroll-core/issues"
+Source = "https://github.com/pyroll-project/pyroll-core"
+
+[build-system]
+requires = ["uv_build~=0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "pyroll.core"
+
+[tool.pyright]
+venvPath = ".devenv/state"
+venv = "venv"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 120
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle
+  "F",   # Pyflakes
+  "UP",  # pyupgrade
+  "B",   # flake8-bugbear
+  "SIM", # flake8-simplify
+  "I",   # isort
+]
+
+ignore = [
+  "B006", # mutable data structures in task arguments
+  "B008", # function calls in task arguments
+  "E501", # long lines (string literals)
+  "E741", # ambiguous variable names
+]
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.isort]
+known-first-party = ["pyroll.core"]
+
+[tool.pytask.ini_options]
+paths = ["tasks"]
+ignore = [".*", "_*"]

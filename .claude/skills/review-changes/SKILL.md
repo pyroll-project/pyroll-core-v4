@@ -24,7 +24,7 @@ Start one fresh `reviewer` agent in the foreground. Its prompt contains:
 - the revision and the command to see the diff (`jj diff --git -r <rev>`)
 - the list of changed files
 - the spec/ADR/task paths to check against, or the note that none exist
-- if the change touches `docs/`: also check that it follows the terminology table of ADR 0002 (entity, property, model, process definition, model pool), and that it is consistent with existing ADRs and with `docs/conventions.md`
+- if the change touches `docs/`: also check that it follows the terminology table in `docs/architecture.md` (entity, property, model, process definition, model pool), and that it is consistent with existing ADRs and with `docs/conventions.md`
 - the instruction to report findings in its standard format with severity, `path:line`, failure scenario and suggested fix, plus check results and a verdict
 
 ## 3. Verify and report

@@ -1,11 +1,11 @@
 # 0001 Reimplement entities of PyRolL 3
 
 - Status: draft
-- Related: ADR 0002
+- Related: ADR 0003, ADR 0004
 
 ## Goal
 
-Implement entity types for units and profiles that mirror those of [PyRolL 3](https://github.com/pyroll-project/pyroll-core/tree/v.3.1.0) (latest release `v.3.1.0`), following ADR 0002.
+Implement entity types for units and profiles that mirror those of [PyRolL 3](https://github.com/pyroll-project/pyroll-core/tree/v.3.1.0) (latest release `v.3.1.0`), following ADR 0003 and ADR 0004.
 
 ## Scope
 
@@ -51,7 +51,7 @@ Only these v3 classes are implemented:
 
 - Concrete classes are identified by a type literal in snake case, e.g. `'two_roll_pass'`.
 - Class aliases are also available as type literals (discriminated union tags), e.g. `'roll_pass'`. The more precise tag is the canonical one and is used for serialization: `'two_roll_pass'` (alias `'roll_pass'`) and `'pass_sequence'` (alias `'sequence'`).
-- Discriminated unions are fixed; new entity types are only added in the core (see ADR 0002).
+- Discriminated unions are fixed; new entity types are only added in the core (see ADR 0003).
 - Do not use the `ValidateSubclasses` mechanism of `pyroll-pydantic-extensions`.
 
 ### Relations between entities

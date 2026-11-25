@@ -31,6 +31,6 @@ Coding conventions for pyroll-core. Rules enforced by tooling are configured in 
 - Commit messages follow the [Conventional Commits](https://www.conventionalcommits.org/) standard.
 - Allowed scopes are the following:
   - entity: anything related with entities (pydantic entity types and their properties)
-  - model: anything related with models (physical models relating entity properties, see ADR 0002)
+  - model: anything related with models (physical models relating entity properties, see ADR 0005)
   - ai: anything related with ai config
 - Split tests and implementation into separate commits (using `jj split`).

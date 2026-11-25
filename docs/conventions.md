@@ -9,7 +9,7 @@ Coding conventions for pyroll-core. Rules enforced by tooling are configured in 
 
 ## Code style
 
-- Absolute imports only, e.g. `from pyroll.core.data_model import ...`. Relative imports are banned (ruff `flake8-tidy-imports`).
+- Absolute imports only, e.g. `from pyroll.core.entities import ...`. Relative imports are banned (ruff `flake8-tidy-imports`).
 - Line length 120. Ruff rule sets: E, F, UP, B, SIM, I.
 - Public APIs are fully typed.
 - Model data with pydantic v2 (and `pyroll-pydantic-extensions` where applicable); use numpy for numerics and shapely 2 for geometry.
@@ -21,7 +21,7 @@ Coding conventions for pyroll-core. Rules enforced by tooling are configured in 
 
 ## Tests
 
-- Tests live in `tests/`, mirroring the package layout (`src/pyroll/core/data_model/units.py` → `tests/data_model/test_units.py`).
+- Tests live in `tests/`, mirroring the package layout (`src/pyroll/core/entities/units.py` → `tests/entities/test_units.py`).
 - Plain pytest functions and fixtures; use `pytest.mark.parametrize` for case tables. Fixtures and marks without parentheses (`@pytest.fixture`).
 - Compare floats and arrays with tolerances (`pytest.approx`, `numpy.testing.assert_allclose`); compare geometries using shapely predicates (e.g. `equals_exact`) rather than object equality.
 - Test through the public API; avoid asserting on private attributes.
@@ -30,7 +30,7 @@ Coding conventions for pyroll-core. Rules enforced by tooling are configured in 
 
 - Commit messages follow the [Conventional Commits](https://www.conventionalcommits.org/) standard.
 - Allowed scopes are the following:
-  - model: anything related with data model
-  - systems: anything related with systems (equations tying data model components together)
+  - entity: anything related with entities (pydantic entity types and their properties)
+  - model: anything related with models (physical models relating entity properties, see ADR 0002)
   - ai: anything related with ai config
 - Split tests and implementation into separate commits (using `jj split`).

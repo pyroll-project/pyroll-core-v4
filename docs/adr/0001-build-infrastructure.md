@@ -9,7 +9,7 @@ pyroll-core is a Python library published to PyPI as `pyroll-core`. It provides 
 
 - ship only `pyroll/core` and never a `pyroll/__init__.py`, which would break the namespace for plugins,
 - build reproducibly from a locked dependency set,
-- generate Python code from Jinja templates at build time (for example repetitive data model or system code). The generated code must end up in the wheel without being maintained by hand.
+- generate Python code from Jinja templates at build time (for example repetitive entity or model code). The generated code must end up in the wheel without being maintained by hand.
 
 The project was scaffolded with uv as the project manager and `uv_build` as the build backend. `uv_build` is fast and needs no configuration for simple pure-Python packages. However, it deliberately offers no extension points: no build hooks, no plugins and no dynamic metadata. Code generation during the build is therefore impossible with it.
 

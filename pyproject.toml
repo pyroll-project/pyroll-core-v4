@@ -5,19 +5,19 @@ authors = [{ name = "Max Weiner", email = "max.weiner@imf.tu-freiberg.de" }]
 version = "4.0a"
 requires-python = ">=3.14"
 dependencies = [
-  "numpy",
-  "shapely ~= 2.0",
-  "pydantic ~= 2.13",
-  "pyroll-pydantic-extensions",
+    "numpy",
+    "shapely ~= 2.0",
+    "pydantic ~= 2.13",
+    "pyroll-pydantic-extensions",
 ]
 license = "BSD-3-Clause"
 readme = "README.md"
 keywords = []
 classifiers = [
-  "Development Status :: 3 - Alpha",
-  "Programming Language :: Python :: 3.14",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python",
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python",
 ]
 
 [project.urls]
@@ -45,19 +45,19 @@ docstring-code-line-length = 120
 
 [tool.ruff.lint]
 select = [
-  "E",   # pycodestyle
-  "F",   # Pyflakes
-  "UP",  # pyupgrade
-  "B",   # flake8-bugbear
-  "SIM", # flake8-simplify
-  "I",   # isort
+    "E",   # pycodestyle
+    "F",   # Pyflakes
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+    "I",   # isort
 ]
 
 ignore = [
-  "B006", # mutable data structures in task arguments
-  "B008", # function calls in task arguments
-  "E501", # long lines (string literals)
-  "E741", # ambiguous variable names
+    "B006", # mutable data structures in task arguments
+    "B008", # function calls in task arguments
+    "E501", # long lines (string literals)
+    "E741", # ambiguous variable names
 ]
 
 [tool.ruff.lint.flake8-pytest-style]
@@ -73,3 +73,6 @@ known-first-party = ["pyroll.core"]
 [tool.pytask.ini_options]
 paths = ["tasks"]
 ignore = [".*", "_*"]
+
+[dependency-groups]
+dev = ["pytest~=9.2"]

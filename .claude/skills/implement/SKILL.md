@@ -52,6 +52,6 @@ Finally, verify independently with `uv run ruff check . && uv run ruff format --
 - final check results (quote failures)
 - unresolved findings from the last review, with severity and `path:line`
 - open questions and spec gaps for the user, and any suggested ADRs
-- generate the commit message based on the changes and the implemented feature spec
+- generate the commit message based on the changes and the implemented feature spec, following the Commits section of `docs/conventions.md`
 
 Do not commit. Leave the changes in the working copy for the user to inspect.

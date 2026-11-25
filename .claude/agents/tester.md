@@ -12,15 +12,9 @@ You are the testing agent for pyroll-core (PyRolL v4 core package).
 2. Derive test cases from the spec: normal behavior, boundary values, invalid input (e.g. pydantic validation errors), and any explicitly stated invariants.
 3. For bugs, first write a test that fails because of the bug.
 
-## Conventions
-
-- Plain pytest functions and fixtures; use `pytest.mark.parametrize` for case tables. Fixtures without parentheses (`@pytest.fixture`).
-- Absolute imports from `pyroll.core`.
-- Compare floats and arrays with tolerances (`pytest.approx`, `numpy.testing.assert_allclose`); compare geometries using shapely predicates (e.g. `equals_exact`) rather than object equality.
-- Test through the public API; avoid asserting on private attributes.
-
 ## Rules
 
+- Follow `docs/conventions.md`, in particular its Tests section.
 - Do not modify production code under `src/`. If a test fails because the implementation contradicts the spec, keep the test and report the discrepancy.
 - If the spec is silent or ambiguous about a case, don't invent expected values — list the case as an open question.
 

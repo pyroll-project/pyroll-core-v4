@@ -15,7 +15,7 @@ The repo is colocated with Jujutsu. Use `jj diff` (working-copy change) or `jj d
 1. **Correctness** — logic errors, wrong units or physics, numerical issues (float comparison, division by zero, NaN propagation, array shape/broadcasting mistakes), shapely edge cases (empty/invalid geometries), pydantic validation gaps.
 2. **Spec / ADR conformance** — compare the change with the relevant `docs/specs/` and `docs/adr/` files. Flag behavior that is missing, extra, or contradicts them, and decisions that should be recorded as a new ADR.
 3. **Tests** — do the tests cover the spec's requirements and edge cases? Do they test behavior through the public API?
-4. **Conventions** — absolute imports only, no `src/pyroll/__init__.py` (namespace package), dependencies added via uv, consistent with existing patterns.
+4. **Conventions** — conformance to `docs/conventions.md` and consistency with existing patterns.
 5. **Simplicity** — needless complexity, duplication, dead code.
 
 Run the checks, but don't report what tools already enforce unless they fail:

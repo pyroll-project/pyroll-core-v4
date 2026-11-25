@@ -31,7 +31,7 @@ Simulation is split into three layers:
 
 1. **Definition:** the user defines the process (initial profile and units with their known properties) and selects the model pool. See ADR 0003 (entities), ADR 0004 (property representation) and ADR 0005 (models).
 2. **Compilation:** a heuristic algorithm constructs a dependency graph. It starts from the sought properties and tries to find an evaluation route back to the known properties of the process definition. See ADR 0006.
-3. **Solution:** the solver evaluates the models in the order given by the dependency graph and iterates locally over circular dependencies. See ADR 0007.
+3. **Solution:** the solver evaluates the models in the order given by the dependency graph and iterates locally over circular dependencies. If a model turns out to be inapplicable to a solution-time value, e.g. a classifier, the solution returns to compilation to find a new route. See ADR 0007.
 
 ## Alternatives considered
 
@@ -39,7 +39,7 @@ Simulation is split into three layers:
 
 ## Consequences
 
-- Dependencies are known before the solution starts. Cycles, unreachable properties and inapplicable models can be detected and reported specifically at compilation time instead of failing generically during the solution.
+- Dependencies are known before the solution starts. Cycles, unreachable properties and inapplicable models can be detected and reported specifically at compilation time instead of failing generically during the solution. Only applicability that depends on solution-time values, e.g. classifiers, is detected later, but still reported specifically and resolved by rerouting.
 - Only cyclic subgraphs need iteration. All other parts are evaluated once, which should reduce solution time and improve stability.
 - Derivatives enable gradient-based solvers for cycles and gradients of results with respect to inputs.
 - Data (entities), physics (models) and solution logic (compiler and solver) are separated into distinct responsibilities.

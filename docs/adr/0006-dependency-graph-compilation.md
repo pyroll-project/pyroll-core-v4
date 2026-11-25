@@ -12,6 +12,7 @@ ADR 0002 introduces a compilation layer between definition and solution. From th
 - The dependency graph is constructed from the known properties of the process definition and the model pool, starting from the sought properties and searching for an evaluation route back to the known ones.
 - When several applicable models can calculate the same property, the one with the highest priority is preferred. Among models of equal priority, the one that adds fewer new nodes to the graph is preferred. The heuristic does not guarantee a globally minimal graph, since that problem is NP-hard in general.
 - Graph construction may run into a dead end, e.g. because no applicable model or no known value exists for a required property. The compiler then keeps trying alternative routes and finally reports every dead end in one concise overview, listing the missing models or property values that would resolve each.
+- Applicability constraints are checked only against type literals and defined properties (ADR 0005). Models depending on solution-time values, e.g. classifiers, are assumed applicable at first. If such a model raises an inapplicability error during the solution, the compiler flags it as inapplicable for the affected entity and searches for a new route without it, as for any other dead end. If no route remains, the inapplicability is included in the dead-end report.
 - The graph is bipartite, with property nodes and model nodes.
 - The graph is analysed, in particular to detect cycles, and partitioned into subgraphs for local iteration.
 - The graph usually consists of several connected components. They are joined by bridges made of multiple edges, typically between processing steps.
@@ -30,6 +31,7 @@ ADR 0002 introduces a compilation layer between definition and solution. From th
 ## Consequences
 
 - Missing models and missing property values are reported all at once at compilation time, before any model is evaluated.
+- Compilation and solution are not strictly sequential: an inapplicability error at solution time leads back to compilation. Inapplicabilities are detected only once the model is evaluated, so a route may have to be rebuilt several times.
 - The chosen graph depends on model priorities and a heuristic, so it is not guaranteed to be minimal.
 - Transfers between consecutive units are explicit models and can be overridden like any other model.
 - `networkx` becomes a runtime dependency.

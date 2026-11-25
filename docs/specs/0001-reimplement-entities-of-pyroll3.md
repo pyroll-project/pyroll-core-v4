@@ -103,6 +103,7 @@ Only these v3 classes are implemented:
   - target values
 - Classifiers are not identical to type literals. A classifier classifies a concrete instance; a type literal identifies the class.
 - Classifiers are kept as strings, so plugins can extend them.
+- `classifiers` is an ordinary property: like any other, it may be unknown and calculated by models, e.g. inferred from the cross-section geometry.
 
 ## Acceptance criteria
 

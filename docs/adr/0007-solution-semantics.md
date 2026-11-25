@@ -14,6 +14,7 @@ ADR 0002 introduces a solution layer that evaluates the dependency graph built b
 - Cyclic subgraphs are iterated until convergence.
 - Defined properties are fixed and must hold in the solution. They are never used as starting values for iterating cycles and are never overwritten.
 - If a defined property can also be calculated by an applicable model, the solver evaluates the model and checks that the result is consistent with the defined value. Inconsistencies are reported, naming the involved properties and models.
+- If a model raises an inapplicability error (ADR 0005), the solver hands it back to the compiler, which flags the model as inapplicable and rebuilds the affected route (ADR 0006). Solving then continues on the new graph.
 - Results are returned as new entity instances. The process definition stays unchanged and can be solved repeatedly, e.g. in parameter studies.
 - Gradients are calculated along the graph from the models' derivative functions (pushforward and pullback, ADR 0005).
 
@@ -24,4 +25,5 @@ ADR 0002 introduces a solution layer that evaluates the dependency graph built b
 
 ## Open questions
 
+- Handling of already computed values after a reroute caused by an inapplicability error: which values become stale and must be discarded, and can re-evaluation be limited to the subgraph affected by the new route?
 - Tolerances for the consistency check of defined properties and convergence criteria for cycle iteration: global, per property or per model?

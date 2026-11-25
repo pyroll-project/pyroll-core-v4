@@ -11,7 +11,7 @@ The architecture follows an Entity-Component-System (ECS) approach in a wider se
    - Property representation: ADR 0004
    - Model declaration: ADR 0005
 2. **Compilation:** a heuristic algorithm constructs a dependency graph from the sought properties back to the known properties of the process definition (ADR 0006).
-3. **Solution:** the solver evaluates the models in the order given by the dependency graph and iterates locally over circular dependencies (ADR 0007).
+3. **Solution:** the solver evaluates the models in the order given by the dependency graph and iterates locally over circular dependencies (ADR 0007). Models that turn out to be inapplicable to solution-time values, e.g. classifiers, send the solution back to compilation for a new route.
 
 ## Terminology
 
@@ -26,7 +26,7 @@ ECS terms are mapped to domain terms as follows. These terms are used consistent
 | **Model pool**         | —              | The set of models the user makes available to the solver for one simulation.                                                                          |
 | **Defined property**   | —              | A property whose value is given in the process definition, explicitly or by a default value. Its value is fixed and must hold in the solution.        |
 | **Type literal**       | —              | The tag that identifies the class of an entity, used as discriminator of discriminated unions, e.g. `'two_roll_pass'`.                                |
-| **Classifier**         | —              | A string that classifies a concrete entity instance, e.g. by shape or material. Unlike type literals, classifiers can be extended by plugins.         |
+| **Classifier**         | —              | A string classifying a concrete instance, e.g. by shape or material; a type literal instead identifies the class. An ordinary property (ADR 0003).    |
 | **Default model pool** | —              | The model pool used unless the user selects otherwise: the basic, generally applicable models included in pyroll-core.                                |
 
 "Model" always means a physical model. Pydantic classes are called entity types, never models. "Pydantic model" is used only when referring to the library mechanism (`BaseModel`) itself.

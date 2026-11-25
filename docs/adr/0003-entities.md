@@ -11,6 +11,7 @@ ADR 0002 splits simulation into definition, compilation and solution. In the def
 
 - Entity types are pydantic classes that mirror real-world plants and objects. They are the ground truth about which data can exist in a rolling process, and they provide types, validation and JSON schemas for free.
 - Almost every property may be missing (unknown) when the user defines the process. Missing properties are to be determined by models.
+- Type literals and classifiers are distinct concepts. A type literal identifies the entity type and is fixed by the class. Classifiers describe a concrete instance, e.g. by shape or material, and are held in an ordinary property (a set of strings). Like any other property, they may be defined by the user or calculated by models, e.g. inferred from the cross-section geometry.
 - Default values of entity types make a property defined. To have such a property calculated by models, the user must explicitly set it to unknown.
 - Process definitions can be serialized and deserialized safely and easily, e.g. to JSON or YAML. Serialized process definitions carry the schema version of pyroll-core they were created with, and loading checks compatibility with the installed version.
 - Key entity types:
@@ -18,7 +19,7 @@ ADR 0002 splits simulation into definition, compilation and solution. In the def
   - **Units:** processing steps, including roll passes and transports (and thus inter-pass times). Later also furnaces and cooling.
   - **Container units:** define pass sequences and the splitting or merging of strands.
   - Later, separate entity types for things not related to the workpiece, e.g. power trains or cooling water processing.
-- Entity types are defined in pyroll-core only. Plugins cannot add entity types; they extend the core with models and classifiers. Wherever several entity types are assignable, e.g. the units of a pass sequence, this is modeled by a discriminated union over type literals that is fixed when the core is built.
+- Entity types are defined in pyroll-core only. Plugins cannot add entity types; they extend the core with models, which may also introduce new classifier values. Wherever several entity types are assignable, e.g. the units of a pass sequence, this is modeled by a discriminated union over type literals that is fixed when the core is built.
 
 ## Consequences
 

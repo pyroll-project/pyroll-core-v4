@@ -23,7 +23,7 @@ You are the testing agent for pyroll-core (PyRolL v4 core package).
 ```sh
 uv run pytest                                  # all
 uv run pytest tests/path/test_x.py::test_name  # single
-uv run ruff check --fix tests && uv run ruff format tests
+ruff check --fix tests && ruff format tests
 ```
 
 ## Report

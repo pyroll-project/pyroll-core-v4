@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Environment & commands
 
-The dev environment is managed by devenv (Nix) with Python 3.14 and uv (`.venv`, auto-synced on shell entry). Always run tools through uv.
+The dev environment is managed by devenv (Nix) with Python 3.14 and uv (`.venv`, auto-synced on shell entry). Python packages and tests run through `uv run`; toolchain binaries (ruff, treefmt, just) are provided by devenv. If they are not on `PATH` (shell not entered), prefix commands with `devenv shell --`.
 
 ```sh
 uv sync                                   # install/update dependencies from uv.lock
@@ -16,8 +16,8 @@ uv add <pkg> / uv add --dev <pkg>         # add a dependency
 uv run pytest                             # run all tests
 uv run pytest tests/path/test_x.py::test_name   # run a single test
 uv run pytest -k "expr"                   # run tests matching an expression
-uv run ruff check --fix .                 # lint
-uv run ruff format .                      # format Python
+ruff check --fix .                        # lint
+ruff format .                             # format Python
 treefmt                                   # format everything (ruff, nixfmt, taplo, yamlfmt, mdformat, just) — also `just format`
 ```
 

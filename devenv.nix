@@ -79,5 +79,6 @@
     nil
     just
     codebook
+    ruff
   ];
 }

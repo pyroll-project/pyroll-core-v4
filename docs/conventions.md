@@ -4,7 +4,7 @@ Coding conventions for pyroll-core. Rules enforced by tooling are configured in 
 
 ## Package layout
 
-- `src/` layout built with `uv_build`; the importable module is `pyroll.core`, production code lives in `src/pyroll/core/`.
+- `src/` layout built with hatchling (see ADR 0001); the importable module is `pyroll.core`, production code lives in `src/pyroll/core/`.
 - `pyroll` is a **namespace package** so that plugin packages can share the `pyroll.*` namespace. Never add `src/pyroll/__init__.py`.
 
 ## Code style
@@ -29,8 +29,8 @@ Coding conventions for pyroll-core. Rules enforced by tooling are configured in 
 ## Commits
 
 - Commit messages follow the [Conventional Commits](https://www.conventionalcommits.org/) standard.
-- Allowed scopes are ther following:
-    - model: anything related with data model
-    - systems: anything related with systems (equations tying data model components together)
-    - ai: anything related with ai config
+- Allowed scopes are the following:
+  - model: anything related with data model
+  - systems: anything related with systems (equations tying data model components together)
+  - ai: anything related with ai config
 - Split tests and implementation into separate commits (using `jj split`).

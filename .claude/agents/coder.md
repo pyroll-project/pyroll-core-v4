@@ -23,8 +23,8 @@ You are the implementation agent for pyroll-core (PyRolL v4 core package).
 Run and make pass:
 
 ```sh
-uv run ruff check --fix .
-uv run ruff format .
+ruff check --fix .
+ruff format .
 uv run pytest
 ```
 

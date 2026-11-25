@@ -44,7 +44,7 @@ Between steps, give the user a one-line status (e.g. "Iteration 2: tester found 
 
 ## 2. Report
 
-Finally, verify independently with `uv run ruff check . && uv run ruff format --check . && uv run pytest` and report to the user:
+Finally, verify independently with `ruff check . && ruff format --check . && uv run pytest` and report to the user:
 
 - outcome: approved / stopped after 3 iterations / escalated (and why)
 - number of iterations run

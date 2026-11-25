@@ -21,8 +21,8 @@ The repo is colocated with Jujutsu. Use `jj diff` (working-copy change) or `jj d
 Run the checks, but don't report what tools already enforce unless they fail:
 
 ```sh
-uv run ruff check .
-uv run ruff format --check .
+ruff check .
+ruff format --check .
 uv run pytest
 ```
 
